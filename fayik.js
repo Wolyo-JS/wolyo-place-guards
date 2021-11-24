@@ -2,11 +2,9 @@ const Discord = require("discord.js");
 
 const fayik1 = require("discord.js");
 const fayik2 = require("discord.js");
-const fayik3 = require("discord.js");
 
 const client1 = new fayik1.Client();
 const client2 = new fayik2.Client();
-const client3 = new fayik3.Client();
 
 const ayarlar = require('./ayarlar.json');
 const config = require('./fayik.json');
@@ -27,7 +25,7 @@ client1.on("guildBanAdd", async function(guild, user) {
   if (fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});     
 
-  guild.members.ban(entry.executor.id, {reason: "Fayikcim System | İzinsiz kullanıcı yasaklama"}).catch(e => { })	
+  guild.members.ban(entry.executor.id, {reason: "İzinsiz kullanıcı yasaklama"}).catch(e => { })	
 
   let channel = client1.channels.cache.get(ayarlar.defenderlog)
    if (!channel) return console.log('Ban Koruma Logu Yok!');
@@ -38,7 +36,7 @@ client1.on("guildBanAdd", async function(guild, user) {
    .setFooter(ayarlar.footer)
    .setDescription(`**Sunucudan Bir Kullanıcı İzinsiz Yasaklandı!**\n\n**Yetkili Bilgisi**\n**${yetkili.user.tag}** **||** **${yetkili.id}**\n\n**Kullanıcı Bilgisi**\n**${user.tag}** **||** **${user.id}**\n\n**Yetkili sunucudan yasaklandı! Rollerdeki tüm yetkiler kapatıldı.**`)
   channel.send(`@everyone`, {embed: fayik}).catch(e => { })	
-return client1.users.cache.get(ayarlar.sahip).send(`**Sunucudan Bir Kullanıcı İzinsiz Yasaklandı!** \n**Yasaklıyan Ve Yasaklanan Kişilerin Bilgileri** \n**Yetkilinin Adı :** \`\`${yetkili.user.tag}\`\` **Yetkilinin İdsi :** \`\`${yetkili.id}\`\`\n**Kullanıcın Adı :** \`\`${user.tag}\`\` **Kullanıcının İdsi :** \`\`${user.id}\`\``).catch(e => { })	
+return client1.users.cache.get(ayarlar.sahip).send(`**Sunucudan Bir Kullanıcı İzinsiz Yasaklandı!** \n**Yasaklıyan Ve Yasaklanan Kişilerin Bilgileri** \n**Yetkilinin Adı :** ${yetkili.user.tag} **Yetkilinin İdsi :** ${yetkili.id}n**Kullanıcın Adı :** ${user.tag} **Kullanıcının İdsi :** ${user.id}`).catch(e => { })	
 });
 
 client1.on("guildMemberRemove", async kickhammer => {
@@ -57,7 +55,7 @@ client1.on("guildMemberRemove", async kickhammer => {
   if (fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});     
 
-  kickhammer.guild.members.ban(yetkili.id, {reason: "Fayikcim System | izinsiz kullanıcı Kickleme!"}).catch(e => { })	
+  kickhammer.guild.members.ban(yetkili.id, {reason: "izinsiz kullanıcı Kickleme!"}).catch(e => { })	
 
   let channel = client1.channels.cache.get(ayarlar.defenderlog)
   if (!channel) return console.log('Kick Koruma Logu Yok!');
@@ -85,7 +83,7 @@ const entry = await member.guild
   if (fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});
 
-  member.guild.members.ban(entry.executor.id, {reason: "Fayikcim System | İzinsiz Bot Ekleme!"}).catch(e => { })	
+  member.guild.members.ban(entry.executor.id, {reason: "İzinsiz Bot Ekleme!"}).catch(e => { })	
   member.guild.members.ban(member.id, {reason: "Fayikcim System | Bot Koruma Sistemi!"}).catch(e => { })	
 
   let channel = client1.channels.cache.get(ayarlar.defenderlog)
@@ -116,7 +114,7 @@ client1.on('guildUpdate', async (oldGuild, newGuild) => {
   if (fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});
 
-  newGuild.members.ban(entry.executor.id, {reason: "Fayikcim System | URL Koruma Sistemi!"}).catch(e => { })	
+  newGuild.members.ban(entry.executor.id, {reason: "URL Koruma Sistemi!"}).catch(e => { })	
 
   let channel = client1.channels.cache.get(ayarlar.defenderlog)
   if (!channel) return console.log('URL Koruma Logu Yok!');
@@ -135,7 +133,7 @@ client1.on('guildUpdate', async (oldGuild, newGuild) => {
     },
     json: true,
     headers: {
-      "Authorization": `Bot ${ayarlar.token}`
+      "Authorization": `Bot process.env.guard1`
     }
   }, (err, res, body) => {
     if (err) {
@@ -158,7 +156,7 @@ client1.on("guildUpdate", async (oldGuild, newGuild) => {
   if (fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});
 
-  newGuild.members.ban(entry.executor.id, { reason: `Fayikcim System | Sunucuyu izinsiz güncellemek.` }).catch(e => { })	
+  newGuild.members.ban(entry.executor.id, { reason: `Sunucuyu izinsiz güncellemek.` }).catch(e => { })	
   const moment = require('moment');
   moment.locale('tr');
 
@@ -175,7 +173,7 @@ return client1.users.cache.get(ayarlar.sahip).send(`**Sunucu ayarlarıyla Oynand
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-client2.on("roleDelete", async role => {
+client1.on("roleDelete", async role => {
   let entry = await role.guild.fetchAuditLogs({type: 'ROLE_DELETE'}).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -186,7 +184,7 @@ client2.on("roleDelete", async role => {
   if(fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});  
 
-  role.guild.members.ban(entry.executor.id, { reason: `Fayikcim System | İzinsiz rol silme!` }).catch(e => { })	
+  role.guild.members.ban(entry.executor.id, { reason: `İzinsiz rol silme!` }).catch(e => { })	
 
   let channel = client2.channels.cache.get(ayarlar.defenderlog)
   if (!channel) return console.log('Rol Koruma Logu Yok!');
@@ -199,7 +197,7 @@ client2.on("roleDelete", async role => {
 return client2.users.cache.get(ayarlar.sahip).send(`**Sunucuda rol silindi! silen kişinin bilgileri :** \n**Kullanıcı Adı :** \`\`${entry.executor.tag}\`\` **Kullanıcı İdsi :** \`\`${entry.executor.id}\`\`\n**Rol Adı :** \`\`${role.name}\`\` **Rol İdsi :** \`\`${role.id}\`\``).catch(e => { })	
 });
 
-client2.on("roleCreate", async role => {
+client1.on("roleCreate", async role => {
   let entry = await role.guild.fetchAuditLogs({type: 'ROLE_CREATE'}).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -210,8 +208,8 @@ client2.on("roleCreate", async role => {
   if(fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});  
 
-  role.guild.members.ban(entry.executor.id, { reason: `Fayikcim System | İzinsiz rol oluşturma!` }).catch(e => { })	
-  role.delete({ reason: "Fayikcim System | Rol Koruma Sistemi" }).catch(e => { })	
+  role.guild.members.ban(entry.executor.id, { reason: `İzinsiz rol oluşturma!` }).catch(e => { })	
+  role.delete({ reason: "Rol Koruma Sistemi" }).catch(e => { })	
 
   let channel = client2.channels.cache.get(ayarlar.defenderlog)
   if (!channel) return console.log('Rol Açma Koruma Logu Yok!');
@@ -224,7 +222,7 @@ client2.on("roleCreate", async role => {
 return client2.users.cache.get(ayarlar.sahip).send(`**Sunucuda rol açıldı! açan kişinin bilgileri :** \n**Kullanıcı Adıı :** \`\`${entry.executor.tag}\`\` **Kullanıcı İdsi :** \`\`${entry.executor.id}\`\``).catch(e => { })	
 });
 
-client2.on("roleUpdate", async (oldRole, newRole) => {
+client1.on("roleUpdate", async (oldRole, newRole) => {
   let entry = await newRole.guild.fetchAuditLogs({type: 'ROLE_UPDATE'}).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -247,7 +245,7 @@ client2.on("roleUpdate", async (oldRole, newRole) => {
   if(fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});  
 
-  newRole.guild.members.ban(entry.executor.id, { reason: `Fayikcim System | İzinsiz Rol Güncelleme!` }).catch(e => { })	
+  newRole.guild.members.ban(entry.executor.id, { reason: `İzinsiz Rol Güncelleme!` }).catch(e => { })	
 
   let channel = client2.channels.cache.get(ayarlar.defenderlog)
   if (!channel) return console.log('Rol Günceleme Koruma Logu Yok!');
@@ -314,7 +312,7 @@ return;
     
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-client3.on("channelDelete", async channel => {
+client2.on("channelDelete", async channel => {
   let entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_DELETE'}).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -325,7 +323,7 @@ client3.on("channelDelete", async channel => {
   if(fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});
 
-  channel.guild.members.ban(entry.executor.id, { reason: `Fayikcim System | İzinsiz Kanal Silme!` }).catch(e => { })	
+  channel.guild.members.ban(entry.executor.id, { reason: `İzinsiz Kanal Silme!` }).catch(e => { })	
   await channel.clone({ reason: "Fayikcim System | Kanal Korum Sistemi!" }).then(async kanal => {
   if(channel.parentID != null) await kanal.setParent(channel.parentID);
   await kanal.setPosition(channel.position);
@@ -342,7 +340,7 @@ channel2.send(`@everyone`, {embed: fayik}).catch(e => { })
 return client3.users.cache.get(ayarlar.sahip).send(`**Sunucuda kanal silindi! Silen kişinin bilgileri :** \n**Kullanıcı Adı :** \`\`${entry.executor.tag}\`\` **Kullanıcı İdsi :** \`\`${entry.executor.id}\`\`\n**Kanal Adı :**\`\`${channel.name}\`\` **Kanal İdsi :** \`\`${channel.id}\`\``).catch(e => { })
 });
 
-client3.on("channelCreate", async channel => {
+client2.on("channelCreate", async channel => {
   let entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_CREATE'}).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -353,7 +351,7 @@ client3.on("channelCreate", async channel => {
   if(fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});
 
-  channel.guild.members.ban(entry.executor.id, { reason: `Fayikcim System | İzinsiz Kanal Oluşturma!` }).catch(e => { })
+  channel.guild.members.ban(entry.executor.id, { reason: `İzinsiz Kanal Oluşturma!` }).catch(e => { })
   channel.delete({reason: "Fayikcim System | Kanal Koruma Sistemi!"}).catch(e => { })
 
   let channel2 = client3.channels.cache.get(ayarlar.defenderlog)
@@ -367,7 +365,7 @@ channel2.send(`@everyone`, {embed: fayik}).catch(e => { })
 return client3.users.cache.get(ayarlar.sahip).send(`**Sunucuda kanal oluşturuldu! oluşturan kişinin bilgileri :** \n**Kullanıcı Adı :** \`\`${entry.executor.tag}\`\` **Kullanıcı İdsi :** \`\`${entry.executor.id}\`\``).catch(e => { })
 });
 
-client3.on("channelUpdate", async (oldChannel, newChannel) => {
+client2.on("channelUpdate", async (oldChannel, newChannel) => {
   let entry = await newChannel.guild.fetchAuditLogs({type: 'CHANNEL_UPDATE'}).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000 || !newChannel.guild.channels.cache.has(newChannel.id)) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -386,7 +384,7 @@ client3.on("channelUpdate", async (oldChannel, newChannel) => {
   if(fayik.permissions.has("ADMINISTRATOR") || fayik.permissions.has("BAN_MEMBERS") || fayik.permissions.has("MANAGE_GUILD") || fayik.permissions.has("KICK_MEMBERS") || fayik.permissions.has("MANAGE_ROLES") || fayik.permissions.has("MANAGE_CHANNELS")) {
   fayik.setPermissions(0).catch(err =>{});}});
 
-  newChannel.guild.members.ban(member.id, { reason: `Fayikcim System | İzinsiz Kanal Güncellemek!` }).catch(e => { })
+  newChannel.guild.members.ban(member.id, { reason: `İzinsiz Kanal Güncellemek!` }).catch(e => { })
 
   let channel = client3.channels.cache.get(ayarlar.defenderlog)
   if (!channel) return console.log('Kanal Günceleme Koruma Logu Yok!');
@@ -399,7 +397,7 @@ client3.on("channelUpdate", async (oldChannel, newChannel) => {
 return client3.users.cache.get(ayarlar.sahip).send(`**Sunucuda kanal güncellendi! Güncelliyen kişinin bilgileri :** \n**Kullanıcı Adı :** \`\`${entry.executor.tag}\` **Kullanıcı idsi :** \`${entry.executor.id}\`\`\n**Kanal İdsi :** \`\`${oldChannel.name}\`\` **Kanal İdsi :** \`\`${oldChannel.id}\`\``).catch(e => { })
 });
 
-client3.on("webhookUpdate", async (channel) => {
+client2.on("webhookUpdate", async (channel) => {
   const entry = await channel.guild.fetchAuditLogs({type: 'WEBHOOK_CREATE'}).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -407,7 +405,7 @@ client3.on("webhookUpdate", async (channel) => {
   if(config.guvenlid.includes(entry.executor.id)) return;
 
   const webhooks = await channel.fetchWebhooks();
-  await webhooks.map(x => x.delete({reason: "Fayikcim System | Webhook Silindi!"})).catch(err => { });
+  await webhooks.map(x => x.delete({reason: "Webhook Silindi!"})).catch(err => { });
   channel.guild.members.ban(entry.executor.id, {reason: "Fayikcim System | İzinsiz Webhook Açmak!"}).catch(err => { });
 
   channel.guild.roles.cache.forEach(async function(fayik) {
@@ -419,7 +417,7 @@ client3.on("webhookUpdate", async (channel) => {
 return;
 });
 
-client3.on("emojiDelete", async (emoji, message) => {
+client2.on("emojiDelete", async (emoji, message) => {
   const entry = await emoji.guild.fetchAuditLogs({ type: "EMOJI_DELETE" }).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -441,7 +439,7 @@ client3.on("emojiDelete", async (emoji, message) => {
 return;
 });
 
-client3.on("emojiCreate", async (emoji, message) => {
+client2.on("emojiCreate", async (emoji, message) => {
   const entry = await emoji.guild.fetchAuditLogs({ type: "EMOJI_CREATE" }).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
   if(config.bots.includes(entry.executor.id)) return;
@@ -463,7 +461,7 @@ client3.on("emojiCreate", async (emoji, message) => {
 return;
 });
 
-client3.on("emojiUpdate", async (oldEmoji, newEmoji) => {
+client2.on("emojiUpdate", async (oldEmoji, newEmoji) => {
   if(oldEmoji === newEmoji) return;
   const entry = await oldEmoji.guild.fetchAuditLogs({ type: "EMOJI_UPDATE" }).then(audit => audit.entries.first());
   if(!entry || !entry.executor || Date.now()-entry.createdTimestamp > 10000) return;
@@ -493,7 +491,7 @@ console.log(`${client1.user.username} ismi ile giriş yapıldı! Guard I Online`
 client1.user.setPresence({ activity: { name: ayarlar.botdurum }, status: ayarlar.status });
 });
 
-client1.login(ayarlar.guardbot1).catch(err => {
+client1.login(process.env.guard1).catch(err => {
 console.error('Guard I Giriş Yapamadı!')
 console.error(err.message)
 });
@@ -505,22 +503,14 @@ console.log(`${client2.user.username} ismi ile giriş yapıldı! Guard II Online
 client2.user.setPresence({ activity: { name: ayarlar.botdurum }, status: ayarlar.status });
 });
 
-client2.login(ayarlar.guardbot2).catch(err => {
+client2.login(process.env.guard2).catch(err => {
 console.error('Guard II Giriş Yapamadı!')
 console.error(err.message)
 });
 
 ///
 
-client3.on("ready", async () => {
-console.log(`${client3.user.username} ismi ile giriş yapıldı! Guard III Online`);
-client3.user.setPresence({ activity: { name: ayarlar.botdurum }, status: ayarlar.status });
-});   
 
-client3.login(ayarlar.guardbot3).catch(err => {
-console.error('Guard III Giriş Yapamadı!')
-console.error(err.message)
-});
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -528,8 +518,6 @@ client1.on('warn', m => console.log(`[WARN - 1] - ${m}`));
 client1.on('error', m => console.log(`[ERROR - 1] - ${m}`));
 client2.on('warn', m => console.log(`[WARN - 2] - ${m}`));
 client2.on('error', m => console.log(`[ERROR - 2] - ${m}`));
-client3.on('warn', m => console.log(`[WARN - 3] - ${m}`));
-client3.on('error', m => console.log(`[ERROR - 3] - ${m}`));
 process.on('uncaughtException', error => console.log(`[ERROR] - ${error}`));
 process.on('unhandledRejection', (err) => console.log(`[ERROR] - ${err}`));
 
