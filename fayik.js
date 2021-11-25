@@ -7,6 +7,7 @@ const client1 = new fayik1.Client();
 const client2 = new fayik2.Client();
 
 const ayarlar = require('./ayarlar.json');
+const keep_alive = require('./keep_alive.js');
 const config = require('./fayik.json');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
