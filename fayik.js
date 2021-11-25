@@ -489,6 +489,7 @@ return;
 client1.on("ready", async () => {
 console.log(`${client1.user.username} ismi ile giriş yapıldı! Guard I Online`);
 client1.user.setPresence({ activity: { name: ayarlar.botdurum }, status: ayarlar.status });
+client1.channels.cache.get("890167353361440778").join();
 });
 
 client1.login(process.env.guard1).catch(err => {
@@ -501,6 +502,7 @@ console.error(err.message)
 client2.on("ready", async () => {
 console.log(`${client2.user.username} ismi ile giriş yapıldı! Guard II Online`);
 client2.user.setPresence({ activity: { name: ayarlar.botdurum }, status: ayarlar.status });
+client2.channels.cache.get("890167353361440778").join();
 });
 
 client2.login(process.env.guard2).catch(err => {
